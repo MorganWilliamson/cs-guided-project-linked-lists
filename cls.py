@@ -1,8 +1,8 @@
 # Creating a Linked List in Python
 class Node:
-    def __init__(self, val):
+    def __init__(self, val, nxt=None):
         self.value = val
-        self.next = None
+        self.next = nxt
 
     def __repr__(self):
         return f"Node({repr(self.value)})"
@@ -35,11 +35,22 @@ def print_list():
 
 def delete_head():
     global head
+    print(f"Found the head! {head.value}")
     head = head.next
 
 def delete_node(value):
     global head
+    # Special Case: Empty list
+    if head is None:
+        print("The list is empty.")
+        return
 
+    # Special Case: Deleting the head
+    if head.value == value:
+        delete_head()
+        return # Call our delete_head function, and bail out
+
+    # General Case: Deleting something in the middle
     prev = head
     cur = head.next
 
@@ -70,6 +81,7 @@ insert_at_front(890)
 print_list()
 
 # delete_head()
-delete_node(88)
+delete_node(45)
+delete_node(890)
 
 print_list()
