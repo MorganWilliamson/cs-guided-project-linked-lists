@@ -1,16 +1,19 @@
+# Creating a Linked List in Python
 class Node:
     def __init__(self, val):
         self.value = val
         self.next = None
-        self.fizz = 3490
 
     def __repr__(self):
         return f"Node({repr(self.value)})"
 
-n = Node(45)
+# Setting initial value (head), and a separate value (o)
+head = Node(45)
 o = Node(88)
 
-print(n.value)
+# Making another reference point to 88, head now moves to o. 
+head.next = o 
+
+print(head.value)
 print(o.value)
-print(n.next)
-print(n.fizz)
+print(head.next)
